@@ -22,13 +22,19 @@ Hook 拦截 → 上传到 MinerU API → 轮询等待完成
 
 ## 支持的格式
 
-| 格式 | 扩展名 | 状态 |
-|--------|-----------|--------|
-| PDF    | `.pdf`    | ✅ 已支持 |
-| Word   | `.docx` `.doc` | ✅ 已支持 |
-| PowerPoint | `.pptx` `.ppt` | ✅ 已支持 |
-| Excel  | `.xlsx` `.xls` | ✅ 已支持 |
-| 图片   | `.png` `.jpg` 等 | ❌ 跳过（请用 [ai-vision-hook](https://github.com/opendatalab/MinerU)） |
+MinerU API v4 能解析的所有格式 — 最大覆盖：
+
+| 类别 | 扩展名 |
+|----------|-----------|
+| PDF | `.pdf` |
+| Word | `.docx` `.doc` `.rtf` `.odt` |
+| Excel | `.xlsx` `.xls` `.csv` |
+| PowerPoint | `.pptx` `.ppt` |
+| 图片（OCR） | `.png` `.jpg` `.jpeg` `.gif` `.webp` `.bmp` `.tiff` `.tif` `.ico` `.heic` `.heif` |
+| 电子书 | `.epub` `.mobi` |
+| 标记语言 | `.html` `.htm` `.xml` |
+
+> **注意：** 纯文本格式（`.txt`、`.md`、`.json`）Claude 本身就能读 — Hook 会跳过它们，避免不必要的 API 调用。
 
 ## 实测性能
 

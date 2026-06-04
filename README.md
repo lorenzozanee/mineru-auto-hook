@@ -22,13 +22,19 @@ The model never sees the binary file. It only reads structured markdown — with
 
 ## Supported formats
 
-| Format | Extension | Status |
-|--------|-----------|--------|
-| PDF    | `.pdf`    | ✅ Working |
-| Word   | `.docx` `.doc` | ✅ Working |
-| PowerPoint | `.pptx` `.ppt` | ✅ Working |
-| Excel  | `.xlsx` `.xls` | ✅ Working |
-| Images | `.png` `.jpg` etc. | ❌ Skipped (use [ai-vision-hook](https://github.com/opendatalab/MinerU)) |
+All formats MinerU API v4 can parse — maximum coverage:
+
+| Category | Extensions |
+|----------|-----------|
+| PDF | `.pdf` |
+| Word | `.docx` `.doc` `.rtf` `.odt` |
+| Excel | `.xlsx` `.xls` `.csv` |
+| PowerPoint | `.pptx` `.ppt` |
+| Images (OCR) | `.png` `.jpg` `.jpeg` `.gif` `.webp` `.bmp` `.tiff` `.tif` `.ico` `.heic` `.heif` |
+| E-books | `.epub` `.mobi` |
+| Markup | `.html` `.htm` `.xml` |
+
+> **Note:** Native text formats (`.txt`, `.md`, `.json`) are already readable by Claude — the hook skips them to avoid unnecessary API calls.
 
 ## Performance
 

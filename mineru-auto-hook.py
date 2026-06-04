@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """
-MinerU Auto-Convert Hook — intercepts Read on convertible documents,
+MinerU Auto-Convert Hook — intercepts Read on all MinerU-supported formats,
 auto-converts via MinerU API, caches result, redirects Read to markdown.
 
-Activation: all models. Only for non-image documents (images → ai-vision-hook).
+Activation: all models. Covers PDF, Office, images (OCR), e-books, markup.
 Cache: ~/.claude/mineru-cache/{md5}.md  (7-day TTL)
-
-Based on mineru-mcp (https://github.com/opendatalab/MinerU)
-Uses MinerU API v4 for document parsing.
 """
 import sys, os, json, time, hashlib, shutil, subprocess, urllib.request, urllib.error
 
@@ -31,9 +28,22 @@ if not API_KEY:
         except Exception:
             pass
 
-# Supported extensions — EXCLUDE image types that ai-vision-hook handles
-CONVERT_EXT = {".pdf", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".xlsx"}
-VISION_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tiff", ".tif", ".ico", ".heic", ".heif"}
+# All formats MinerU API v4 supports — maximum coverage
+CONVERT_EXT = {
+    # Documents
+    ".pdf", ".doc", ".docx", ".rtf", ".odt",
+    # Spreadsheets
+    ".xls", ".xlsx", ".csv",
+    # Presentations
+    ".ppt", ".pptx",
+    # Images (MinerU OCR → markdown with text + layout)
+    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp",
+    ".tiff", ".tif", ".ico", ".heic", ".heif",
+    # E-books
+    ".epub", ".mobi",
+    # Markup / Text (MinerU adds table extraction, layout preservation)
+    ".html", ".htm", ".xml",
+}
 
 
 def ok():
@@ -206,7 +216,7 @@ def main():
         return ok()
 
     ext = os.path.splitext(fp)[1].lower()
-    if ext in VISION_EXT or ext not in CONVERT_EXT:
+    if ext not in CONVERT_EXT:
         return ok()
 
     # ── Hook is triggering ──
