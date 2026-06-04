@@ -117,11 +117,10 @@ ls -lh ~/.claude/mineru-cache/*.md
 
 1. **PreToolUse Hook** 拦截每一次 `Read` 工具调用
 2. 检查文件扩展名是否在可转换列表中（`.pdf`、`.docx`、`.pptx`、`.xlsx` 等）
-3. 跳过图片文件（`.png`、`.jpg` 等）—— 这些由 `ai-vision-hook` 处理
-4. 检查缓存（`~/.claude/mineru-cache/{md5}.md`）—— 有效则即时返回
-5. 上传到 MinerU API，轮询等待处理完成（最长 7.5 分钟超时）
-6. 下载结果 zip，提取 `full.md`，缓存到本地
-7. **重定向** Read 到缓存的 Markdown —— 模型只看到干净的格式化文本
+3. 检查缓存（`~/.claude/mineru-cache/{md5}.md`）—— 有效则即时返回
+4. 上传到 MinerU API，轮询等待处理完成（最长 7.5 分钟超时）
+5. 下载结果 zip，提取 `full.md`，缓存到本地
+6. **重定向** Read 到缓存的 Markdown —— 模型只看到干净的格式化文本
 
 ## 文件结构
 

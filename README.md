@@ -117,11 +117,10 @@ ls -lh ~/.claude/mineru-cache/*.md
 
 1. **PreToolUse hook** intercepts every `Read` tool call
 2. Checks if the file extension is in the convertible list (`.pdf`, `.docx`, `.pptx`, `.xlsx`, etc.)
-3. Skips image files (`.png`, `.jpg`, etc.) — those go to `ai-vision-hook`
-4. Checks the cache (`~/.claude/mineru-cache/{md5}.md`) — returns instantly if valid
-5. Uploads to MinerU API, polls for completion (up to 7.5 min timeout)
-6. Downloads the result zip, extracts `full.md`, caches it
-7. **Redirects** the Read to the cached markdown — the model only sees clean text
+3. Checks the cache (`~/.claude/mineru-cache/{md5}.md`) — returns instantly if valid
+4. Uploads to MinerU API, polls for completion (up to 7.5 min timeout)
+5. Downloads the result zip, extracts `full.md`, caches it
+6. **Redirects** the Read to the cached markdown — the model only sees clean text
 
 ## Files
 
