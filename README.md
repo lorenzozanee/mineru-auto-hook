@@ -1,5 +1,7 @@
 # MinerU Auto-Convert Hook for Claude Code
 
+[🇨🇳 中文文档](README_ZH.md)
+
 **PDF / DOCX / PPTX / XLSX → Markdown, automatically. Before Claude reads a document, this hook converts it to clean, structured markdown via the [MinerU](https://github.com/opendatalab/MinerU) API.**
 
 > Built on top of [**mineru-mcp**](https://github.com/opendatalab/MinerU) — the open-source document parsing engine by OpenDataLab / OpenXLab.
