@@ -4,7 +4,7 @@
 
 **PDF / DOCX / PPTX / XLSX → Markdown，全自动。Claude 读取文档前，Hook 通过 [MinerU](https://github.com/opendatalab/MinerU) API 将其转换为结构化 Markdown。**
 
-> 基于 [**mineru-mcp**](https://github.com/opendatalab/MinerU) — OpenDataLab / OpenXLab 出品的开源文档解析引擎。
+> 基于 [OpenDataLab](https://github.com/opendatalab/MinerU) 的 [**MinerU API v4**](https://mineru.net)。MCP-server 方案见 [mineru-mcp](https://github.com/linxule/mineru-mcp)。
 
 ## 它能做什么
 
@@ -143,7 +143,7 @@ mineru-auto-hook/
 ## 致谢
 
 - **[MinerU](https://github.com/opendatalab/MinerU)** — OpenDataLab 开源文档解析引擎
-- **[mineru-mcp](https://github.com/opendatalab/MinerU)** — 本 Hook 的灵感来源
+- **[mineru-mcp](https://github.com/linxule/mineru-mcp)** — MinerU 的 MCP server 封装（另一种方案）
 - **[mineru.net](https://mineru.net)** — OpenXLab 提供的云 API 服务
 
 ## 许可证

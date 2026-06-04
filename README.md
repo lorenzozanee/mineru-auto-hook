@@ -4,7 +4,7 @@
 
 **PDF / DOCX / PPTX / XLSX → Markdown, automatically. Before Claude reads a document, this hook converts it to clean, structured markdown via the [MinerU](https://github.com/opendatalab/MinerU) API.**
 
-> Built on top of [**mineru-mcp**](https://github.com/opendatalab/MinerU) — the open-source document parsing engine by OpenDataLab / OpenXLab.
+> Powered by [**MinerU API v4**](https://mineru.net) from [OpenDataLab](https://github.com/opendatalab/MinerU). For an MCP-server approach, see [mineru-mcp](https://github.com/linxule/mineru-mcp).
 
 ## What it does
 
@@ -143,7 +143,7 @@ mineru-auto-hook/
 ## Credits
 
 - **[MinerU](https://github.com/opendatalab/MinerU)** — OpenDataLab's open-source document parsing engine
-- **[mineru-mcp](https://github.com/opendatalab/MinerU)** — The MCP server that inspired this hook
+- **[mineru-mcp](https://github.com/linxule/mineru-mcp)** — MCP server wrapper for MinerU (alternative approach)
 - **[mineru.net](https://mineru.net)** — Cloud API service by OpenXLab
 
 ## License
