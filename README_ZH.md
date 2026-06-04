@@ -113,21 +113,6 @@ ls -lh ~/.claude/mineru-cache/*.md
 | `convert_error` | 转换失败（查看 detail 字段了解原因） |
 | `skip_no_key` | API Key 未配置 |
 
-## 安全防护
-
-三层防泄漏措施：
-
-| 层级 | 机制 |
-|-------|-----------|
-| **存储层** | 密钥存储在 `~/.claude/.secrets`（chmod 600，仅 owner 可读写，不进源码） |
-| **会话层** | `scan-secrets.sh --fix` 自动扫描并脱敏会话文件中的密钥 |
-| **代码层** | `.gitignore` 排除 `.secrets`、缓存目录、会话数据 |
-
-建议每次会话结束后运行：
-```bash
-bash ~/.claude/scripts/scan-secrets.sh --fix
-```
-
 ## 工作原理
 
 1. **PreToolUse Hook** 拦截每一次 `Read` 工具调用
@@ -143,9 +128,8 @@ bash ~/.claude/scripts/scan-secrets.sh --fix
 ```
 mineru-auto-hook/
 ├── mineru-auto-hook.py   # 主 Hook 脚本（Python 3，仅用标准库）
-├── scan-secrets.sh        # 密钥扫描器（支持自动脱敏）
 ├── setup.sh               # 一键交互式安装脚本
-├── .gitignore             # 排除密钥和缓存
+├── .gitignore
 ├── README.md              # 英文文档
 └── README_ZH.md           # 中文文档（本文件）
 ```

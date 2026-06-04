@@ -113,21 +113,6 @@ ls -lh ~/.claude/mineru-cache/*.md
 | `convert_error` | Conversion failed (see detail for reason) |
 | `skip_no_key` | API key not configured |
 
-## Security
-
-Three layers of leak prevention:
-
-| Layer | Mechanism |
-|-------|-----------|
-| **Storage** | Key lives in `~/.claude/.secrets` (chmod 600, never in source code) |
-| **Session** | `scan-secrets.sh --fix` auto-redacts keys from session files |
-| **Git** | `.gitignore` excludes `.secrets`, cache, and session data |
-
-Run after each session:
-```bash
-bash ~/.claude/scripts/scan-secrets.sh --fix
-```
-
 ## How it works
 
 1. **PreToolUse hook** intercepts every `Read` tool call
@@ -143,10 +128,10 @@ bash ~/.claude/scripts/scan-secrets.sh --fix
 ```
 mineru-auto-hook/
 ├── mineru-auto-hook.py   # Main hook script (Python 3, stdlib only)
-├── scan-secrets.sh        # Secret scanner with auto-redaction
 ├── setup.sh               # One-click interactive installer
-├── .gitignore             # Excludes secrets and cache
-└── README.md              # This file
+├── .gitignore
+├── README.md              # English docs
+└── README_ZH.md           # Chinese docs
 ```
 
 ## Requirements

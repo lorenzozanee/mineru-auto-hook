@@ -1,19 +1,8 @@
-# Secrets — NEVER commit
+# Secrets
 .secrets
-*.pem
-*.key
-*-key.json
-credentials*
 
-# MinerU cache — runtime artifacts
+# Cache
 mineru-cache/
 
-# Session data — may contain sensitive context
-session-data/
-sessions/
-
-# IDE / editor temp
+# macOS
 .DS_Store
-*.swp
-*.swo
-*~

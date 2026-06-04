@@ -48,15 +48,8 @@ else
     echo -e "  ${GREEN}✓${RESET} Installed → ${SCRIPTS_DIR}/mineru-auto-hook.py"
 fi
 
-# ── Step 2: Copy security scanner ─────────────────────────
-echo -e "${BOLD}[2/5]${RESET} Installing security scanner..."
-
-cp "${SCRIPT_DIR}/scan-secrets.sh" "${SCRIPTS_DIR}/scan-secrets.sh"
-chmod +x "${SCRIPTS_DIR}/scan-secrets.sh"
-echo -e "  ${GREEN}✓${RESET} Installed → ${SCRIPTS_DIR}/scan-secrets.sh"
-
-# ── Step 3: API Key ───────────────────────────────────────
-echo -e "${BOLD}[3/5]${RESET} Configuring MinerU API key..."
+# ── Step 2: API Key ───────────────────────────────────────
+echo -e "${BOLD}[2/4]${RESET} Configuring MinerU API key..."
 echo ""
 echo -e "  MinerU API key 获取方式:"
 echo -e "  1. 访问 ${BOLD}https://mineru.net${RESET} 注册账号"
@@ -102,13 +95,13 @@ EOF
     fi
 fi
 
-# ── Step 4: Cache directory ───────────────────────────────
-echo -e "${BOLD}[4/5]${RESET} Creating cache directory..."
+# ── Step 3: Cache directory ───────────────────────────────
+echo -e "${BOLD}[3/4]${RESET} Creating cache directory..."
 mkdir -p "${CACHE_DIR}"
 echo -e "  ${GREEN}✓${RESET} Created → ${CACHE_DIR}"
 
-# ── Step 5: Hook configuration ────────────────────────────
-echo -e "${BOLD}[5/5]${RESET} Configuring Claude Code hook..."
+# ── Step 4: Hook configuration ────────────────────────────
+echo -e "${BOLD}[4/4]${RESET} Configuring Claude Code hook..."
 
 if [[ ! -f "${SETTINGS_FILE}" ]]; then
     echo -e "  ${RED}✗${RESET} ${SETTINGS_FILE} not found. Is Claude Code installed?"
@@ -175,7 +168,5 @@ echo -e "  2. Ask Claude to read it → hook auto-converts to markdown"
 echo -e "  3. Check log:  ${BOLD}cat ${CACHE_DIR}/hook.log${RESET}"
 echo -e "  4. Check cache: ${BOLD}ls ${CACHE_DIR}/*.md${RESET}"
 echo ""
-echo -e "  ${BOLD}Security scan:${RESET}"
-echo -e "  ${BOLD}bash ${SCRIPTS_DIR}/scan-secrets.sh --fix${RESET}"
 echo -e "${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
